@@ -33,7 +33,13 @@
     .hamb span:before,.hamb span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#e6f1ff}
     .hamb span:before{top:-6px}.hamb span:after{top:6px}
     nav.menu{display:none;flex-direction:column;gap:8px;padding:10px 0}
-    nav.menu a{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05)}
+    nav.menu a{
+  padding:10px 12px;
+  border-radius:10px;
+  background:rgba(255,255,255,.10); /* lighter tile */
+  color:var(--fg);                   /* force light text */
+  border:1px solid rgba(255,255,255,.18);
+}
     .open nav.menu{display:flex}
     @media (min-width:860px){
       .hamb{display:none}
@@ -91,7 +97,8 @@
     <div class="wrap nav" id="topbar">
       <div class="logo">
         <img alt="UDAY logo" src="logo.png" />
-        <div class="brand" data-i18n="brandName">UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता</div>
+        <div class="brand" data-i18n="brandName">
+          UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता</div>
       </div>
       <div class="spacer"></div>
       <button class="btn secondary lang-btn" id="langBtn" aria-label="Switch language">English</button>
