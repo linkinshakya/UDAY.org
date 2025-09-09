@@ -32,14 +32,16 @@
     .hamb span{display:block;width:20px;height:2px;background:#e6f1ff;position:relative}
     .hamb span:before,.hamb span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#e6f1ff}
     .hamb span:before{top:-6px}.hamb span:after{top:6px}
-    nav.menu{display:none;flex-direction:column;gap:8px;padding:10px 0}
-    /* add this just below the nav.menu rule */
-nav.menu{
-  background:var(--panel);
+    nav.menu{
+  display:none;                 /* stays hidden until .open added */
+  flex-direction:column;
+  gap:8px;
+  padding:10px;                 /* uniform padding */
+  background:var(--panel);      /* visible panel behind links */
   border:1px solid rgba(255,255,255,.12);
   border-radius:12px;
-  padding:10px;
 }
+
 
     .open nav.menu{display:flex}
     @media (min-width:860px){
