@@ -1,105 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>UDAY.org — United Democratic Awareness for Youth</title>
-  <meta name="description" content="Making India's Constitution simple, practical, and relevant for youth. Explainers, civic literacy, and dialogues." />
+  <meta name="description" content="UDAY — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता। भारतीय संविधान को सरल, व्यावहारिक और प्रासंगिक बनाना।" />
   <meta name="theme-color" content="#0b1b2a" />
   <style>
-    /* Root theme variables for dark mode and responsive sizing */
     :root{
       --bg:#0b1b2a; --fg:#e6f1ff; --muted:#c9d6e8; --brand:#00c2a8; --accent:#ffb703; --panel:#0f2536;
       --ink:#0e1726; --radius:16px; --shadow:0 14px 34px rgba(0,0,0,.22);
-      --maxw:1100px;
-      /* Responsive padding and font sizes using clamp for fluid scaling */
-      --pad:clamp(14px,2.8vw,22px);
-      --fs-1:clamp(20px,4.6vw,36px);
-      --fs-2:clamp(18px,3.4vw,26px);
+      --maxw:1100px; --pad:clamp(14px,2.8vw,22px); --fs-1:clamp(22px,5vw,38px); --fs-2:clamp(18px,3.4vw,26px);
       --tap:48px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;background:var(--bg);color:var(--fg);
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
     a{color:var(--brand);text-decoration:none}
-    a:active{opacity:.9}
-
-    /* Layout wrapper to center content and provide padding */
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-
-    /* Sticky header with blurred background for readability on mobile */
-    header{
-      position:sticky;top:0;z-index:10;
-      background:linear-gradient(180deg,#0b1b2a,rgba(11,27,42,.85));
-      backdrop-filter:saturate(1.2) blur(6px);
-    }
-    /* Navigation bar styles */
-    .nav{
-      display:flex;align-items:center;gap:10px;min-height:64px;
-    }
-    .logo{
-      width:40px;height:40px;border-radius:10px;
-      background:#08324a url('logo.png') center/cover no-repeat;
-      flex:0 0 auto;
-    }
+    /* header */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#0b1b2a,rgba(11,27,42,.85));backdrop-filter:saturate(1.2) blur(6px)}
+    .nav{display:flex;align-items:center;gap:10px;min-height:64px}
+    .logo{display:inline-flex;align-items:center;gap:10px}
+    .logo img{width:40px;height:40px;border-radius:10px;object-fit:cover;border:1px solid rgba(255,255,255,.15)}
     .brand{font-weight:800;letter-spacing:.2px}
     .spacer{flex:1}
-
-    /* Button base styles and sizes for accessibility */
-    .btn, .chip, .nav a{touch-action:manipulation}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      min-height:var(--tap);padding:10px 14px;border-radius:12px;
-      background:var(--brand);color:#072024;font-weight:700
-    }
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:var(--tap);padding:10px 14px;border-radius:12px;background:var(--brand);color:#072024;font-weight:700}
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--fg)}
-    .lang-btn{min-width:92px}
-
-    /* Hamburger menu button for mobile nav */
-    .hamb{
-      display:inline-flex;align-items:center;justify-content:center;
-      width:var(--tap);height:var(--tap);border-radius:10px;
-      border:1px solid rgba(255,255,255,.18);
-    }
+    .lang-btn{min-width:92px;position:relative;z-index:60}
+    .hamb{display:inline-flex;align-items:center;justify-content:center;width:var(--tap);height:var(--tap);border-radius:10px;border:1px solid rgba(255,255,255,.18)}
     .hamb span{display:block;width:20px;height:2px;background:#e6f1ff;position:relative}
     .hamb span:before,.hamb span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#e6f1ff}
-    .hamb span:before{top:-6px}
-    .hamb span:after{top:6px}
-
-    /* Mobile menu initially hidden; toggled open via JS */
+    .hamb span:before{top:-6px}.hamb span:after{top:6px}
     nav.menu{display:none;flex-direction:column;gap:8px;padding:10px 0}
     nav.menu a{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05)}
     .open nav.menu{display:flex}
-
-    /* Desktop nav styles override mobile on wider screens */
     @media (min-width:860px){
       .hamb{display:none}
       nav.menu{display:flex !important;flex-direction:row;background:transparent;padding:0;gap:12px}
       nav.menu a{background:transparent}
     }
-
-    /* Hero section and card styles */
-    .hero{
-      display:grid;gap:14px;grid-template-columns:1fr;
-      padding:var(--pad); margin:var(--pad) 0;
-      background:linear-gradient(135deg,#0c2132,#0e2c41);
-      border-radius:20px; box-shadow:var(--shadow)
-    }
+    /* sections */
+    main.wrap{padding-bottom:24px}
+    .hero{display:grid;gap:14px;grid-template-columns:1fr; padding:var(--pad); margin:var(--pad) 0;
+      background:linear-gradient(135deg,#0c2132,#0e2c41); border-radius:20px; box-shadow:var(--shadow)}
     .hero h1{font-size:var(--fs-1);margin:0}
     .hero p{color:var(--muted);margin:.4rem 0 1rem}
     .cta{display:flex;gap:10px;flex-wrap:wrap}
-    .kpis{
-      display:grid;grid-template-columns:repeat(2,1fr);
-      gap:10px;margin-top:6px
-    }
-    .kpis .card{
-      background:#0d3148;border:1px solid rgba(255,255,255,.06);
-      border-radius:14px;padding:12px;text-align:center
-    }
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
+    .kpis .card{background:#0d3148;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px;text-align:center}
     h2{font-size:var(--fs-2);margin:26px 0 10px}
     section{padding:8px 0}
     .cards{display:grid;gap:12px;grid-template-columns:1fr}
@@ -108,13 +57,8 @@
     .chips .chip{background:#0d3148;border:1px solid rgba(255,255,255,.08);padding:8px 10px;border-radius:999px;font-size:.95rem}
     .video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000}
     .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-
-    /* Small type and notes */
     .note{font-size:.95rem;color:var(--muted)}
-    .footer{
-      margin:28px 0;padding:16px 0;color:#aac1d6;
-      border-top:1px solid rgba(255,255,255,.08);font-size:.95rem
-    }
+    .footer{margin:28px 0;padding:16px 0;color:#aac1d6;border-top:1px solid rgba(255,255,255,.08);font-size:.95rem}
     input[type="email"]{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:var(--fg)}
     .newsletter{display:grid;grid-template-columns:1fr auto;gap:10px}
 
@@ -124,314 +68,310 @@
       .kpis{grid-template-columns:repeat(4,1fr)}
     }
 
-    /* Light mode overrides using CSS variables */
-    .light{
-      --bg:#f6f9fc; --fg:#0e1726; --muted:#546a85;
-      --panel:#ffffff; --brand:#0bb3a2; --accent:#f59f00
-    }
-    .light .nav a, .light nav.menu a{background:rgba(0,0,0,.05)}
+    /* light mode */
+    .light{--bg:#f6f9fc; --fg:#0e1726; --muted:#546a85; --panel:#ffffff; --brand:#0bb3a2; --accent:#f59f00}
+    .light nav.menu a{background:rgba(0,0,0,.05)}
     .light .btn.secondary{border-color:rgba(0,0,0,.15);color:var(--ink)}
-
-    /* Accessibility: reduce motion if user prefers reduced-motion */
-    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
   </style>
+
+  <!-- Language bootstrap: default Hindi, allow ?lang= override, avoid English flash -->
+  <script>
+    (function(){
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q === 'hi' || q === 'en') localStorage.setItem('uday-lang', q);
+      var start = localStorage.getItem('uday-lang') || 'hi';
+      document.documentElement.lang = (start === 'hi') ? 'hi' : 'en';
+      document.documentElement.style.visibility = 'hidden'; // prevent flash before i18n.apply()
+      window.__UDAY_START_LANG__ = start;
+    })();
+  </script>
 </head>
 <body>
   <header>
-    <!-- Navigation bar with logo, brand, language toggle and hamburger menu -->
     <div class="wrap nav" id="topbar">
-      <div class="logo" aria-label="UDAY.org logo"></div>
-      <div class="brand" data-i18n="brandName">UDAY.org — United Democratic Awareness for Youth</div>
+      <div class="logo">
+        <img alt="UDAY logo" src="data:image/webp;base64,UklGRjQAAABXRUJQVlA4TDwAAAAvB8AHEEoEAP7/2wCEAAwICQoKCQoLCwwQDAwQGBYSEBMYGRwdHh8oJC0pKzU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTX/2wCEARERExcaGho1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1Nv/wAARCABaAFQDASIAAhEBAxEB/8QAHQAAAQQCAwAAAAAAAAAAAAAABQYEBwEDCAkL/8QANBAAAQMDAgQEBQIHAAAAAAAAAQIDBAUGEQASIRMxQVEiYRQyQnGBkaGx0QcVIzNi8CSDkqLwM//EABoBAQADAQEBAAAAAAAAAAAAAAIDBAUBBgH/xAApEQACAQMEAgIBBQAAAAAAAAABAgMRBBIhMUFRBCJhcYGx8BMi/9oADAMBAAIRAxEAPwD0Ykq0yQb2y1j4o0lZs1uQmV6V5u1t2eQ9O0GZpY3Uu9Vw0uQ5O+8m8f1oH7TgUqGk3eK8U1X8Xx2qQjI7tJx7F6j7m2gJ5rJ8kcrqkq2qzIdbqf3C2l5s3C6ZqGvQwA5gJ9R1h1QJ1v2+q2G0zYg5Jx7XQK8kq6u1VY6GJm9sVwQxkJpQWfX2k5h4K+WwN2m3cH5D4l1lu6b3x8t2t0F9sV4h9ZkWlS8bqmuq8bJH3E+gP1+2j9Xl0F1m3Qw6q5iO3tjqf0yC5C8ZzvXqXk4wq2U3e1aXxq1k1r9I6bXQmB6k5vJm6y9o2dFq0dK7Zx0m+q9tWQ0+6FJ1R1pqu3w2q1hWq7I8b+Wz6g5nVARq1n9GO8Q8r0t2HcF2c9b8t7f3yP4k5mM5nQ0eU5V7S2kVq0gqS3uQbQJm6z4G4q0S9w2kJ2YxJH6g4kHlVQ2Hq3kqVRgA==" />
+        <div class="brand" data-i18n="brandName">UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता</div>
+      </div>
       <div class="spacer"></div>
-      <!-- Language switch button (Hindi <-> English) -->
-      <button class="btn secondary lang-btn" id="langBtn" aria-label="Switch language">हिन्दी</button>
-      <!-- Hamburger for mobile menu toggle -->
+      <button class="btn secondary lang-btn" id="langBtn" aria-label="Switch language">English</button>
       <button class="hamb" id="hamb" aria-label="Open menu"><span></span></button>
     </div>
-    <!-- Navigation links container (hidden on mobile until toggled) -->
     <div class="wrap" id="navWrap">
       <nav class="menu" id="menu">
-        <a href="#about" data-i18n="navAbout">About</a>
-        <a href="#programs" data-i18n="navPrograms">Programs</a>
-        <a href="#videos" data-i18n="navVideos">Videos</a>
-        <a href="#get-involved" data-i18n="navInvolved">Get Involved</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
-        <!-- Light/dark mode toggle inside nav on mobile; hidden on desktop but still accessible -->
+        <a href="#about" data-i18n="navAbout">हमारे बारे में</a>
+        <a href="#programs" data-i18n="navPrograms">कार्यक्रम</a>
+        <a href="#videos" data-i18n="navVideos">वीडियो</a>
+        <a href="#intro" data-i18n="navIntro">परिचय</a>
+        <a href="#contact" data-i18n="navContact">संपर्क</a>
         <label style="display:inline-flex;align-items:center;gap:6px;margin-left:auto">
-          <input id="mode" type="checkbox" /> <span data-i18n="light">Light</span>
+          <input id="mode" type="checkbox" /> <span data-i18n="light">लाइट</span>
         </label>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- Hero section with call to actions and stats -->
     <section class="hero">
       <div>
-        <h1 data-i18n="heroH1">Empowering Youth with India’s Constitution</h1>
-        <p data-i18n="heroP">Practical, engaging content that turns constitutional literacy into everyday action.</p>
+        <h1 data-i18n="heroH1">भारतीय संविधान के साथ युवाओं को सशक्त बनाना</h1>
+        <p data-i18n="heroP">व्यावहारिक और रोचक सामग्री जो संवैधानिक साक्षरता को रोज़मर्रा की क्रिया में बदल दे।</p>
         <div class="cta">
-          <a class="btn" href="https://www.youtube.com/@udayorg" target="_blank" rel="noopener" data-i18n="ctaWatch">Watch on YouTube</a>
-          <a class="btn secondary" href="#get-involved" data-i18n="ctaJoin">Join the Community</a>
+          <a class="btn" href="https://www.youtube.com/@udayorg" target="_blank" rel="noopener" data-i18n="ctaWatch">YouTube पर देखें</a>
+          <a class="btn secondary" href="#intro" data-i18n="ctaJoin">समुदाय से जुड़ें</a>
         </div>
-        <!-- Key performance indicators placeholders; dynamic via script -->
         <div class="kpis" aria-label="Channel highlights">
-          <div class="card"><div style="opacity:.7" data-i18n="kVideos">Videos</div><div style="font-weight:800;font-size:1.25rem" id="stat-videos">—</div></div>
-          <div class="card"><div style="opacity:.7" data-i18n="kPlaylists">Playlists</div><div style="font-weight:800;font-size:1.25rem" id="stat-playlists">—</div></div>
-          <div class="card"><div style="opacity:.7" data-i18n="kLive">Live</div><div style="font-weight:800;font-size:1.25rem" id="stat-live">—</div></div>
-          <div class="card"><div style="opacity:.7" data-i18n="kSubs">Subs</div><div style="font-weight:800;font-size:1.25rem" id="stat-subs">—</div></div>
+          <div class="card"><div style="opacity:.7" data-i18n="kVideos">वीडियो</div><div style="font-weight:800;font-size:1.25rem" id="stat-videos">100+</div></div>
+          <div class="card"><div style="opacity:.7" data-i18n="kPlaylists">प्लेलिस्ट</div><div style="font-weight:800;font-size:1.25rem" id="stat-playlists">5+</div></div>
+          <div class="card"><div style="opacity:.7" data-i18n="kLive">लाइव</div><div style="font-weight:800;font-size:1.25rem" id="stat-live">Weekly</div></div>
+          <div class="card"><div style="opacity:.7" data-i18n="kSubs">सब्स</div><div style="font-weight:800;font-size:1.25rem" id="stat-subs">—</div></div>
         </div>
       </div>
-      <!-- Description card on hero right-hand side -->
       <div class="card">
-        <strong data-i18n="whatIs">What is UDAY?</strong><br/>
-        <span data-i18n="whatIsBody">United Democratic Awareness for Youth — dedicated to simplifying India’s Constitution and civic processes for young citizens.</span>
+        <strong data-i18n="whatIs">UDAY क्या है?</strong><br/>
+        <span data-i18n="whatIsBody">युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता — भारतीय संविधान और नागरिक प्रक्रियाओं को सरल बनाने के लिए समर्पित।</span>
       </div>
     </section>
 
-    <!-- About section with mission and program tags -->
     <section id="about">
-      <h2 data-i18n="about">About</h2>
+      <h2 data-i18n="about">हमारे बारे में</h2>
       <div class="cards">
         <div class="card">
-          <p><strong data-i18n="mission">Mission:</strong> <span data-i18n="missionText">Build a generation of informed, confident citizens by making the Constitution of India simple, practical, and relevant.</span></p>
-          <p><strong data-i18n="whatWeDo">What we do:</strong> <span data-i18n="whatWeDoText">Bite-size explainers, case breakdowns, live Q&As, and campus workshops that decode rights, duties, and governance.</span></p>
+          <p><strong data-i18n="mission">उद्देश्य:</strong> <span data-i18n="missionText">भारत के संविधान को सरल, व्यावहारिक और प्रासंगिक बनाकर जागरूक व आत्मविश्वासी नागरिकों की पीढ़ी बनाना।</span></p>
+          <p><strong data-i18n="whatWeDo">हम क्या करते हैं:</strong> <span data-i18n="whatWeDoText">संक्षिप्त समझाने वाले वीडियो, केस-ब्रेकडाउन, लाइव Q&A और कैंपस कार्यशालाएँ जो अधिकारों, कर्तव्यों और शासन को स्पष्ट करती हैं।</span></p>
           <div class="chips">
-            <div class="chip" data-i18n="chip1">Constitution 101</div>
-            <div class="chip" data-i18n="chip2">Civic Literacy</div>
-            <div class="chip" data-i18n="chip3">Case-in-Point</div>
-            <div class="chip" data-i18n="chip4">Youth Dialogues</div>
+            <div class="chip" data-i18n="chip1">संविधान 101</div>
+            <div class="chip" data-i18n="chip2">नागरिक साक्षरता</div>
+            <div class="chip" data-i18n="chip3">केस-इन-पॉइंट</div>
+            <div class="chip" data-i18n="chip4">युवा संवाद</div>
           </div>
         </div>
         <div class="card">
-          <p><strong data-i18n="whyTitle">Why it matters:</strong> <span data-i18n="whyText">Constitutional awareness reduces misinformation, strengthens democratic values, and helps youth engage constructively—online and offline.</span></p>
-          <p class="note"><span data-i18n="campusAsk">Want a campus session?</span> <a href="#contact" data-i18n="msgUs">Message us</a> <span data-i18n="weShare">; we’ll share a quick starter kit.</span></p>
+          <p><strong data-i18n="whyTitle">क्यों ज़रूरी है:</strong> <span data-i18n="whyText">संवैधानिक जागरूकता गलत सूचनाओं को घटाती है, लोकतांत्रिक मूल्यों को मजबूत करती है और युवाओं को सार्थक भागीदारी के लिए प्रेरित करती है।</span></p>
+          <p class="note"><span data-i18n="campusAsk">कैंपस सत्र चाहिए?</span> <a href="#contact" data-i18n="msgUs">हमसे संदेश में बात करें</a> <span data-i18n="weShare">; हम एक त्वरित स्टार्टर किट साझा करेंगे।</span></p>
         </div>
       </div>
     </section>
 
-    <!-- Programs section listing core initiatives -->
     <section id="programs">
-      <h2 data-i18n="programs">Programs</h2>
+      <h2 data-i18n="programs">कार्यक्रम</h2>
       <div class="cards">
         <div class="card">
-          <h3 data-i18n="p1">Constitution 101</h3>
-          <p data-i18n="p1t">Plain-language explainers of key Articles, Schedules, and amendments—no legalese, just clarity.</p>
+          <h3 data-i18n="p1">संविधान 101</h3>
+          <p data-i18n="p1t">महत्वपूर्ण अनुच्छेदों, अनुसूचियों और संशोधनों के सरल, साफ़ व्याख्यान—बिना कानूनी जटिलता।</p>
         </div>
         <div class="card">
-          <h3 data-i18n="p2">Civic Literacy</h3>
-          <p data-i18n="p2t">How elections, local bodies, and public institutions actually function—and how you can participate.</p>
+          <h3 data-i18n="p2">नागरिक साक्षरता</h3>
+          <p data-i18n="p2t">चुनाव, स्थानीय निकाय और संस्थाएँ वास्तव में कैसे चलती हैं—और आप कैसे भाग लें।</p>
         </div>
         <div class="card">
-          <h3 data-i18n="p3">Case-in-Point</h3>
-          <p data-i18n="p3t">Real cases and current events made simple with practical takeaways and further reading.</p>
+          <h3 data-i18n="p3">केस-इन-पॉइंट</h3>
+          <p data-i18n="p3t">वास्तविक केस और घटनाएँ—सरल भाषा में, व्यवहारिक निष्कर्षों के साथ।</p>
         </div>
         <div class="card">
-          <h3 data-i18n="p4">Youth Dialogues</h3>
-          <p data-i18n="p4t">Live Q&As and campus circles that turn passive viewing into discussion and action.</p>
+          <h3 data-i18n="p4">युवा संवाद</h3>
+          <p data-i18n="p4t">लाइव Q&A और चर्चा-वृत्त जो निष्क्रिय देखने को सक्रिय भागीदारी में बदलते हैं।</p>
         </div>
       </div>
     </section>
 
-    <!-- Videos section with three sample embeds; user can update IDs -->
     <section id="videos">
-      <h2 data-i18n="videos">Latest Videos</h2>
-      <p class="note" data-i18n="videoNote">Swap the three example video IDs with your latest uploads (YouTube → Share → Copy link → take the ID after “v=”).</p>
+      <h2 data-i18n="videos">नवीनतम वीडियो</h2>
       <div class="cards">
         <div class="video card">
-          <iframe loading="lazy" src="https://www.youtube.com/embed/VIDEO_ID_1" title="UDAY video 1" allowfullscreen></iframe>
+          <iframe loading="lazy" src="https://www.youtube.com/embed/ab-kmEpLVbs" title="UDAY video 1" allowfullscreen></iframe>
         </div>
         <div class="video card">
-          <iframe loading="lazy" src="https://www.youtube.com/embed/VIDEO_ID_2" title="UDAY video 2" allowfullscreen></iframe>
+          <iframe loading="lazy" src="https://www.youtube.com/embed/Hv-2495qxkQ" title="UDAY video 2" allowfullscreen></iframe>
         </div>
         <div class="video card">
-          <iframe loading="lazy" src="https://www.youtube.com/embed/VIDEO_ID_3" title="UDAY video 3" allowfullscreen></iframe>
-        </div>
-      </div>
-      <p class="note" style="margin-top:10px">
-        <span data-i18n="preferPlaylists">Prefer playlists?</span>
-        <a href="https://www.youtube.com/@udayorg/playlists" target="_blank" rel="noopener" data-i18n="seePlaylists">See playlists</a>.
-      </p>
-    </section>
-
-    <!-- Get Involved section for volunteers and partners -->
-    <section id="get-involved">
-      <h2 data-i18n="involved">Get Involved</h2>
-      <div class="cards">
-        <div class="card">
-          <h3 data-i18n="volunteer">Volunteer</h3>
-          <p data-i18n="volText">Host a campus circle, help with captions/subtitles, or moderate online communities.</p>
-          <a class="btn secondary" href="#contact" data-i18n="putMe">Put me on the list</a>
-        </div>
-        <div class="card">
-          <h3 data-i18n="collab">Collaborate</h3>
-          <p data-i18n="collabText">Colleges, NGOs, and clubs—co-create talks, workshops, and civic drives.</p>
-          <a class="btn secondary" href="#contact" data-i18n="partner">Partner with UDAY</a>
-        </div>
-        <div class="card">
-          <h3 data-i18n="support">Support</h3>
-          <p data-i18n="supportText">Sponsor translations, travel, production, or gear. Every bit compounds impact.</p>
-          <a class="btn secondary" href="#contact" data-i18n="help">I’d like to help</a>
+          <iframe loading="lazy" src="https://www.youtube.com/embed/Iu6WjP4fyYk" title="UDAY video 3" allowfullscreen></iframe>
         </div>
       </div>
     </section>
 
-    <!-- Contact section with email and subscription form -->
+    <section id="intro">
+      <h2 data-i18n="introTitle">परिचय</h2>
+      <div class="card" data-i18n="introBody">
+        <!-- Hindi content will be inserted by i18n.apply() -->
+      </div>
+    </section>
+
     <section id="contact">
-      <h2 data-i18n="contact">Contact</h2>
+      <h2 data-i18n="contact">संपर्क</h2>
       <div class="cards">
-          <div class="card">
-            <p><strong data-i18n="email">Email:</strong> <a href="mailto:hello@uday.org">hello@uday.org</a> <span class="note" data-i18n="replaceEmail">(replace with your real address)</span></p>
-            <p><strong data-i18n="youtube">YouTube:</strong> <a href="https://www.youtube.com/@udayorg" target="_blank" rel="noopener">@udayorg</a></p>
-            <form class="newsletter" onsubmit="subscribe(event)">
-              <input id="email" type="email" placeholder="Get updates — enter your email" required />
-              <button class="btn" type="submit" data-i18n="subscribe">Subscribe</button>
-            </form>
-            <p id="sub-msg" class="note" aria-live="polite" style="margin-top:8px"></p>
-          </div>
+        <div class="card">
+          <p><strong data-i18n="email">ईमेल:</strong> <a href="mailto:hello@uday.org">hello@uday.org</a> <span class="note" data-i18n="replaceEmail">(अपना वास्तविक पता जोड़ें)</span></p>
+          <p><strong data-i18n="youtube">YouTube:</strong> <a href="https://www.youtube.com/@udayorg" target="_blank" rel="noopener">@udayorg</a></p>
+          <form class="newsletter" onsubmit="subscribe(event)">
+            <input id="email" type="email" placeholder="अपडेट पाने के लिए ईमेल लिखें" required />
+            <button class="btn" type="submit" data-i18n="subscribe">सब्सक्राइब करें</button>
+          </form>
+          <p id="sub-msg" class="note" aria-live="polite" style="margin-top:8px"></p>
+        </div>
       </div>
     </section>
 
-    <!-- Footer with copyright -->
     <footer class="footer">
-      <div data-i18n="foot">UDAY.org — United Democratic Awareness for Youth. © 2025. 🇮🇳</div>
+      <div data-i18n="foot">UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता. © 2025. 🇮🇳</div>
     </footer>
   </main>
 
   <script>
-    // Toggle hamburger menu and nav visibility
-    const navWrap = document.getElementById('navWrap');
-    const hamb = document.getElementById('hamb');
-    hamb.addEventListener('click', () => {
-      navWrap.classList.toggle('open');
-    });
+    // hamburger
+    const navWrap=document.getElementById('navWrap');
+    const hamb=document.getElementById('hamb');
+    hamb.addEventListener('click',()=>{ navWrap.classList.toggle('open'); });
 
-    // Light/dark mode toggle with localStorage persistence
-    const mode = document.getElementById('mode');
-    mode.addEventListener('change', () => {
-      document.body.classList.toggle('light', mode.checked);
+    // light/dark
+    const mode=document.getElementById('mode');
+    mode.addEventListener('change',()=>{
+      document.body.classList.toggle('light',mode.checked);
       localStorage.setItem('uday-mode', mode.checked ? 'light' : 'dark');
     });
-    (function() {
-      const pref = localStorage.getItem('uday-mode');
-      if (pref === 'light') {
-        document.body.classList.add('light');
-        mode.checked = true;
-      }
-    })();
+    (function(){ const pref=localStorage.getItem('uday-mode'); if(pref==='light'){ document.body.classList.add('light'); mode.checked=true; } })();
 
-    // Populate static stats (editable; can be wired to API later)
-    const stats = { videos: '100+', playlists: '5+', live: 'Weekly', subs: '—' };
-    ['videos', 'playlists', 'live', 'subs'].forEach(key => {
-      const el = document.getElementById('stat-' + key);
-      if (el) el.textContent = stats[key];
-    });
-
-    // Newsletter subscription stub; displays a message and resets the form
-    function subscribe(e) {
+    // newsletter stub
+    function subscribe(e){
       e.preventDefault();
-      const email = document.getElementById('email').value.trim();
+      const email=document.getElementById('email').value.trim();
       document.getElementById('sub-msg').textContent = i18n.t('thanks').replace('{email}', email);
       e.target.reset();
     }
 
-    // --- i18n: English & Hindi dictionary and functions ---
-    const dict = {
-      en: {
-        brandName: "UDAY.org — United Democratic Awareness for Youth",
-        navAbout: "About", navPrograms: "Programs", navVideos: "Videos",
-        navInvolved: "Get Involved", navContact: "Contact", light: "Light",
-        heroH1: "Empowering Youth with India’s Constitution",
-        heroP: "Practical, engaging content that turns constitutional literacy into everyday action.",
-        ctaWatch: "Watch on YouTube", ctaJoin: "Join the Community",
-        kVideos: "Videos", kPlaylists: "Playlists", kLive: "Live", kSubs: "Subs",
-        whatIs: "What is UDAY?",
-        whatIsBody: "United Democratic Awareness for Youth — dedicated to simplifying India’s Constitution and civic processes for young citizens.",
-        about: "About", mission: "Mission:", missionText: "Build a generation of informed, confident citizens by making the Constitution of India simple, practical, and relevant.",
-        whatWeDo: "What we do:", whatWeDoText: "Bite-size explainers, case breakdowns, live Q&As, and campus workshops that decode rights, duties, and governance.",
-        chip1: "Constitution 101", chip2: "Civic Literacy", chip3: "Case-in-Point", chip4: "Youth Dialogues",
-        whyTitle: "Why it matters:", whyText: "Constitutional awareness reduces misinformation, strengthens democratic values, and helps youth engage constructively—online and offline.",
-        campusAsk: "Want a campus session?", msgUs: "Message us", weShare: "; we’ll share a quick starter kit.",
-        programs: "Programs", p1: "Constitution 101", p1t: "Plain-language explainers of key Articles, Schedules, and amendments—no legalese, just clarity.",
-        p2: "Civic Literacy", p2t: "How elections, local bodies, and public institutions actually function—and how you can participate.",
-        p3: "Case-in-Point", p3t: "Real cases and current events made simple with practical takeaways and further reading.",
-        p4: "Youth Dialogues", p4t: "Live Q&As and campus circles that turn passive viewing into discussion and action.",
-        videos: "Latest Videos", videoNote: "Swap the three example video IDs with your latest uploads (YouTube → Share → Copy link → take the ID after “v=”).",
-        preferPlaylists: "Prefer playlists?", seePlaylists: "See playlists",
-        involved: "Get Involved", volunteer: "Volunteer", volText: "Host a campus circle, help with captions/subtitles, or moderate online communities.", putMe: "Put me on the list",
-        collab: "Collaborate", collabText: "Colleges, NGOs, and clubs—co-create talks, workshops, and civic drives.", partner: "Partner with UDAY",
-        support: "Support", supportText: "Sponsor translations, travel, production, or gear. Every bit compounds impact.", help: "I’d like to help",
-        contact: "Contact", email: "Email:", youtube: "YouTube:", replaceEmail: "(replace with your real address)",
-        subscribe: "Subscribe", foot: "UDAY.org — United Democratic Awareness for Youth. © 2025. 🇮🇳",
-        thanks: "Thanks! We’ll email {email} when new content drops.",
-        switchToHindi: "हिन्दी", switchToEnglish: "English"
+    // --- i18n dictionaries (HI default / EN alt) ---
+    const intro_hindi = `
+<p><strong>United Democratic Awareness for Youth (UDAY)</strong> की स्थापना वर्ष <strong>2011</strong> में भारतीय संविधान की भावना, मूल्यों और उद्देश्यों को जन-जन तक पहुँचाने के लिए की गई। संगठन का लक्ष्य है कि भारत का हर नागरिक, चाहे वह किसी भी धर्म, जाति या वर्ग का हो, संविधान को अपने अधिकारों और कर्तव्यों का आधार बनाए।</p>
+<h3>ऐतिहासिक योगदान</h3>
+<ol>
+  <li><strong>संविधान की प्रस्तावना का प्रकाशन (2013):</strong><br>
+  वर्ष 2013 में, UDAY Group के विशेष अनुरोध पर, डॉ. विनय पॉल, निदेशक, डॉ. अम्बेडकर फाउंडेशन (सामाजिक न्याय एवं अधिकारिता मंत्रालय, भारत सरकार) ने भारतीय संविधान की प्रस्तावना की <strong>10,000 प्रतियाँ</strong> प्रकाशित कीं। यह इतिहास में पहली बार था जब भारत सरकार ने इतने बड़े स्तर पर प्रस्तावना का प्रकाशन कर इसे जनता तक पहुँचाया।</li>
+  <li><strong>भारतीय संविधान को ‘राष्ट्रीय ग्रंथ’ घोषित करना (2015):</strong><br>
+  UDAY Group के सतत जन-जागृति अभियान के परिणामस्वरूप, भारत सरकार ने वर्ष 2015 में भारतीय संविधान को <strong>राष्ट्रीय ग्रंथ (Rastriya Granth)</strong> घोषित किया—संविधान की सर्वोच्चता और महत्व को मान्यता देने वाला ऐतिहासिक क्षण।</li>
+  <li><strong>संविधान जन-जागृति अभियान:</strong><br>
+  गाँव-गाँव, नगर-नगर में संविधान की प्रतियाँ बाँटी गईं; डॉ. बाबा साहेब अंबेडकर के विचारों का प्रचार-प्रसार किया गया; हिन्दू, मुस्लिम, दलित, पिछड़े, आदिवासी तथा अन्य समुदायों में संविधान की जानकारी देकर <em>एकता और समानता</em> का संदेश पहुँचाया गया।</li>
+</ol>
+<h3>नेतृत्व और संगठनात्मक शक्ति</h3>
+<ul>
+  <li><strong>R. R. Bag</strong> — एडवोकेट, सुप्रीम कोर्ट ऑफ इंडिया; संस्थापक एवं इंटरनेशनल प्रेसीडेंट</li>
+  <li><strong>Devki Nandan</strong> — संस्थापक; वरिष्ठ सामाजिक कार्यकर्ता</li>
+  <li><strong>Ajay Pal Bharti</strong> — संस्थापक; संविधान जागृति अभियान के रणनीतिकार</li>
+  <li><strong>Ombir Singh</strong> — संस्थापक; जनसंपर्क एवं जागृति कार्यक्रम संयोजक</li>
+  <li><strong>Inderjit</strong> — राष्ट्रीय अध्यक्ष; संगठनात्मक सुदृढ़ता के प्रेरक</li>
+</ul>
+<h3>प्रभाव और उपलब्धियाँ</h3>
+<ul>
+  <li>संविधान को लोक-आंदोलन बनाने में सफलता</li>
+  <li>हजारों युवा, महिलाएँ और वरिष्ठ नागरिक अभियान से जुड़े</li>
+  <li>मीडिया, शैक्षणिक संस्थानों और सामाजिक संगठनों के माध्यम से संविधान पर राष्ट्रीय विमर्श को आगे बढ़ाया</li>
+</ul>
+<p><strong>UDAY</strong> ने सिद्ध किया है कि यदि संकल्प मज़बूत हो और नेतृत्व ईमानदार हो, तो संविधान जैसे महान दस्तावेज़ को जन-जन की ताक़त बनाया जा सकता है। संगठन का यह योगदान भारतीय लोकतंत्र और सामाजिक न्याय की यात्रा में <em>स्वर्णाक्षरों</em> में अंकित रहेगा।</p>
+<p>📜 <em>“संविधान केवल एक ग्रंथ नहीं, बल्कि भारत की आत्मा और राष्ट्रीय गौरव है।”</em></p>
+`;
+
+    const intro_english = `
+<p><strong>United Democratic Awareness for Youth (UDAY)</strong> was founded in <strong>2011</strong> to take the spirit, values, and purpose of the Constitution of India to every citizen. The goal is that every Indian—across religion, caste, or class—understands the Constitution as the foundation of their rights and duties.</p>
+<h3>Historic Contributions</h3>
+<ol>
+  <li><strong>Preamble Publication (2013):</strong> At UDAY’s request, Dr. Vinay Paul, Director, Dr. Ambedkar Foundation (Ministry of Social Justice & Empowerment, Govt. of India) published <strong>10,000 copies</strong> of the Constitution’s Preamble—the first such large-scale government effort.</li>
+  <li><strong>Constitution declared the “National Granth” (2015):</strong> Following UDAY’s public campaigns, the Government of India recognized the Constitution as the <strong>Rāṣṭrīya Granth</strong>—an historic acknowledgment of its supremacy and importance.</li>
+  <li><strong>Mass Awareness Drives:</strong> Copies of the Constitution were distributed across villages and towns; Dr. B. R. Ambedkar’s ideas were popularized; diverse communities were reached with messages of <em>unity and equality</em>.</li>
+</ol>
+<h3>Leadership</h3>
+<ul>
+  <li><strong>R. R. Bag</strong> — Advocate, Supreme Court of India; Founder & International President</li>
+  <li><strong>Devki Nandan</strong> — Founder; Senior Social Worker</li>
+  <li><strong>Ajay Pal Bharti</strong> — Founder; Strategist of the Constitutional Awareness Campaign</li>
+  <li><strong>Ombir Singh</strong> — Founder; Public Relations & Program Coordinator</li>
+  <li><strong>Inderjit</strong> — National President; Organizational Strength</li>
+</ul>
+<h3>Impact</h3>
+<ul>
+  <li>Helped make the Constitution a people’s movement</li>
+  <li>Thousands of youth, women, and seniors joined awareness efforts</li>
+  <li>Advanced national discourse through media, academia, and civil society</li>
+</ul>
+<p><strong>UDAY</strong> has shown that with resolve and honest leadership, the Constitution can truly become the strength of every citizen. This contribution will remain etched in the journey of Indian democracy and social justice.</p>
+<p>📜 <em>“The Constitution is not just a book; it is India’s soul and national pride.”</em></p>
+`;
+
+    const dict={
+      hi:{
+        brandName:"UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता",
+        navAbout:"हमारे बारे में", navPrograms:"कार्यक्रम", navVideos:"वीडियो", navIntro:"परिचय", navContact:"संपर्क", light:"लाइट",
+        heroH1:"भारतीय संविधान के साथ युवाओं को सशक्त बनाना",
+        heroP:"व्यावहारिक और रोचक सामग्री जो संवैधानिक साक्षरता को रोज़मर्रा की क्रिया में बदल दे।",
+        ctaWatch:"YouTube पर देखें", ctaJoin:"समुदाय से जुड़ें",
+        kVideos:"वीडियो", kPlaylists:"प्लेलिस्ट", kLive:"लाइव", kSubs:"सब्स",
+        whatIs:"UDAY क्या है?", whatIsBody:"युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता — भारतीय संविधान और नागरिक प्रक्रियाओं को सरल बनाने के लिए समर्पित।",
+        about:"हमारे बारे में", mission:"उद्देश्य:", missionText:"भारत के संविधान को सरल, व्यावहारिक और प्रासंगिक बनाकर जागरूक व आत्मविश्वासी नागरिकों की पीढ़ी बनाना।",
+        whatWeDo:"हम क्या करते हैं:", whatWeDoText:"संक्षिप्त समझाने वाले वीडियो, केस-ब्रेकडाउन, लाइव Q&A और कैंपस कार्यशालाएँ जो अधिकारों, कर्तव्यों और शासन को स्पष्ट करती हैं।",
+        chip1:"संविधान 101", chip2:"नागरिक साक्षरता", chip3:"केस-इन-पॉइंट", chip4:"युवा संवाद",
+        whyTitle:"क्यों ज़रूरी है:", whyText:"संवैधानिक जागरूकता गलत सूचनाओं को घटाती है, लोकतांत्रिक मूल्यों को मजबूत करती है और युवाओं को सार्थक भागीदारी के लिए प्रेरित करती है।",
+        campusAsk:"कैंपस सत्र चाहिए?", msgUs:"हमसे संदेश में बात करें", weShare:"; हम एक त्वरित स्टार्टर किट साझा करेंगे।",
+        programs:"कार्यक्रम", p1:"संविधान 101", p1t:"महत्वपूर्ण अनुच्छेदों, अनुसूचियों और संशोधनों के सरल, साफ़ व्याख्यान—बिना कानूनी जटिलता।",
+        p2:"नागरिक साक्षरता", p2t:"चुनाव, स्थानीय निकाय और संस्थाएँ वास्तव में कैसे चलती हैं—और आप कैसे भाग लें।",
+        p3:"केस-इन-पॉइंट", p3t:"वास्तविक केस और घटनाएँ—सरल भाषा में, व्यवहारिक निष्कर्षों के साथ।",
+        p4:"युवा संवाद", p4t:"लाइव Q&A और चर्चा-वृत्त जो निष्क्रिय देखने को सक्रिय भागीदारी में बदलते हैं।",
+        videos:"नवीनतम वीडियो",
+        introTitle:"परिचय",
+        introBody: intro_hindi,
+        contact:"संपर्क", email:"ईमेल:", youtube:"YouTube:", replaceEmail:"(अपना वास्तविक पता जोड़ें)",
+        subscribe:"सब्सक्राइब करें", foot:"UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता. © 2025. 🇮🇳",
+        thanks:"धन्यवाद! नया कंटेंट आते ही हम {email} पर ईमेल करेंगे।",
+        switchToHindi:"English", switchToEnglish:"हिन्दी"
       },
-      hi: {
-        brandName: "UDAY.org — संयुक्त लोकतांत्रिक जागरूकता युवाओं के लिए",
-        navAbout: "हमारे बारे में", navPrograms: "कार्यक्रम", navVideos: "वीडियो",
-        navInvolved: "शामिल हों", navContact: "संपर्क", light: "लाइट",
-        heroH1: "भारतीय संविधान के साथ युवाओं को सशक्त बनाना",
-        heroP: "व्यावहारिक और रोचक सामग्री जो संवैधानिक साक्षरता को रोज़मर्रा की क्रिया में बदल दे।",
-        ctaWatch: "YouTube पर देखें", ctaJoin: "समुदाय से जुड़ें",
-        kVideos: "वीडियो", kPlaylists: "प्लेलिस्ट", kLive: "लाइव", kSubs: "सब्स",
-        whatIs: "UDAY क्या है?",
-        whatIsBody: "युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता — भारतीय संविधान और नागरिक प्रक्रियाओं को सरल बनाने के लिए समर्पित।",
-        about: "हमारे बारे में", mission: "उद्देश्य:", missionText: "भारत के संविधान को सरल, व्यावहारिक और प्रासंगिक बनाकर जागरूक व आत्मविश्वासी नागरिकों की पीढ़ी बनाना।",
-        whatWeDo: "हम क्या करते हैं:", whatWeDoText: "संक्षिप्त समझाने वाले वीडियो, केस-ब्रेकडाउन, लाइव Q&A और कैंपस कार्यशालाएँ जो अधिकारों, कर्तव्यों और शासन को स्पष्ट करती हैं।",
-        chip1: "संविधान 101", chip2: "नागरिक साक्षरता", chip3: "केस-इन-पॉइंट", chip4: "युवा संवाद",
-        whyTitle: "क्यों ज़रूरी है:", whyText: "संवैधानिक जागरूकता भ्रामक सूचनाओं को घटाती है, लोकतांत्रिक मूल्यों को मजबूत करती है और युवाओं को सार्थक भागीदारी के लिए प्रेरित करती है।",
-        campusAsk: "कैंपस सत्र चाहिए?", msgUs: "हमसे संदेश में बात करें", weShare: "; हम एक त्वरित स्टार्टर किट साझा करेंगे।",
-        programs: "कार्यक्रम", p1: "संविधान 101", p1t: "महत्वपूर्ण अनुच्छेदों, अनुसूचियों और संशोधनों के सरल, साफ़-सुथरे व्याख्यान — बिना कानूनी जटिलता।",
-        p2: "नागरिक साक्षरता", p2t: "चुनाव, स्थानीय निकाय और संस्थाएँ वास्तविकता में कैसे चलती हैं — और आप कैसे भाग लें।",
-        p3: "केस-इन-पॉइंट", p3t: "वास्तविक केस व समसामयिक घटनाएँ, आसान भाषा में व्यवहारिक निष्कर्षों के साथ।",
-        p4: "युवा संवाद", p4t: "लाइव Q&A और चर्चा-वृत्त जो निष्क्रिय देखने को सक्रिय भागीदारी में बदल देते हैं।",
-        videos: "नवीनतम वीडियो", videoNote: "तीन उदाहरण वीडियो आईडी को अपने नवीनतम अपलोड से बदलें (YouTube → Share → लिंक कॉपी → \"v=\" के बाद का भाग लें)।",
-        preferPlaylists: "प्लेलिस्ट पसंद है?", seePlaylists: "प्लेलिस्ट देखें",
-        involved: "शामिल हों", volunteer: "स्वयंसेवक", volText: "कैंपस सर्कल चलाएँ, कैप्शन/सबटाइटल में मदद करें या ऑनलाइन समुदायों का संचालन करें।", putMe: "मुझे सूची में जोड़ें",
-        collab: "सहयोग", collabText: "कॉलेज, NGO और क्लब — वार्ताएँ, कार्यशालाएँ व अभियान मिलकर करें।", partner: "UDAY के साथ साझेदारी करें",
-        support: "समर्थन", supportText: "अनुवाद, यात्रा, प्रोडक्शन या उपकरण को प्रायोजित करें। हर सहयोग प्रभाव बढ़ाता है।", help: "मैं मदद करना चाहता/चाहती हूँ",
-        contact: "संपर्क", email: "ईमेल:", youtube: "YouTube:", replaceEmail: "(अपना वास्तविक पता जोड़ें)",
-        subscribe: "सब्सक्राइब करें", foot: "UDAY.org — युवाओं के लिए संयुक्त लोकतांत्रिक जागरूकता. © 2025. 🇮🇳",
-        thanks: "धन्यवाद! नया कंटेंट आते ही हम {email} पर ईमेल करेंगे।",
-        switchToHindi: "English", switchToEnglish: "हिन्दी"
+      en:{
+        brandName:"UDAY.org — United Democratic Awareness for Youth",
+        navAbout:"About", navPrograms:"Programs", navVideos:"Videos", navIntro:"Introduction", navContact:"Contact", light:"Light",
+        heroH1:"Empowering Youth with India’s Constitution",
+        heroP:"Practical, engaging content that turns constitutional literacy into everyday action.",
+        ctaWatch:"Watch on YouTube", ctaJoin:"Join the Community",
+        kVideos:"Videos", kPlaylists:"Playlists", kLive:"Live", kSubs:"Subs",
+        whatIs:"What is UDAY?", whatIsBody:"United Democratic Awareness for Youth — dedicated to simplifying India’s Constitution and civic processes for young citizens.",
+        about:"About", mission:"Mission:", missionText:"Build a generation of informed, confident citizens by making the Constitution simple, practical, and relevant.",
+        whatWeDo:"What we do:", whatWeDoText:"Bite-size explainers, case breakdowns, live Q&As, and campus workshops that decode rights, duties, and governance.",
+        chip1:"Constitution 101", chip2:"Civic Literacy", chip3:"Case-in-Point", chip4:"Youth Dialogues",
+        whyTitle:"Why it matters:", whyText:"Constitutional awareness reduces misinformation, strengthens democratic values, and encourages constructive civic engagement.",
+        campusAsk:"Want a campus session?", msgUs:"Message us", weShare:"; we’ll share a quick starter kit.",
+        programs:"Programs", p1:"Constitution 101", p1t:"Plain-language explainers of key Articles, Schedules, and amendments—no legalese, just clarity.",
+        p2:"Civic Literacy", p2t:"How elections, local bodies, and institutions work—and how to participate.",
+        p3:"Case-in-Point", p3t:"Real cases and current events, distilled with practical takeaways.",
+        p4:"Youth Dialogues", p4t:"Live Q&As and circles that turn passive viewing into action.",
+        videos:"Latest Videos",
+        introTitle:"Introduction",
+        introBody: intro_english,
+        contact:"Contact", email:"Email:", youtube:"YouTube:", replaceEmail:"(replace with your real address)",
+        subscribe:"Subscribe", foot:"UDAY.org — United Democratic Awareness for Youth. © 2025. 🇮🇳",
+        thanks:"Thanks! We’ll email {email} when new content drops.",
+        switchToHindi:"हिन्दी", switchToEnglish:"English"
       }
     };
 
-    // i18n controller: handles translations and persisting language preference
     const i18n = {
-      lang: localStorage.getItem('uday-lang') || 'en',
-      t(key) {
-        return dict[this.lang][key] || key;
-      },
-      apply() {
-        // Set html lang attribute
-        document.documentElement.lang = this.lang === 'hi' ? 'hi' : 'en';
-        // Update all elements with data-i18n attribute
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const k = el.getAttribute('data-i18n');
-          const val = this.t(k);
-          if (el.tagName === 'INPUT' && el.placeholder) {
-            el.placeholder = val;
-          } else {
-            el.textContent = val;
-          }
+      lang: window.__UDAY_START_LANG__ || 'hi',
+      t(key){ return dict[this.lang][key] || key; },
+      apply(){
+        document.documentElement.lang = (this.lang === 'hi') ? 'hi' : 'en';
+        // normal keys
+        document.querySelectorAll('[data-i18n]').forEach(el=>{
+          const k=el.getAttribute('data-i18n'); const val=this.t(k);
+          if(k==='introBody'){ el.innerHTML = val; } // large HTML block
+          else if(el.tagName==='INPUT' && el.placeholder){ el.placeholder = val; }
+          else el.textContent = val;
         });
-        // Update language button text (toggle label)
+        // button label
         document.getElementById('langBtn').textContent =
-          this.lang === 'hi' ? dict.hi.switchToHindi : dict.en.switchToHindi;
+          (this.lang === 'hi') ? dict.hi.switchToHindi : dict.en.switchToHindi;
+        // reveal after apply to avoid flash
+        document.documentElement.style.visibility = '';
       },
-      set(lang) {
-        this.lang = lang;
-        localStorage.setItem('uday-lang', lang);
-        this.apply();
-      }
+      set(lang){ this.lang=lang; localStorage.setItem('uday-lang', lang); this.apply(); }
     };
-    // Initial application of translations on page load
     i18n.apply();
 
-    // Language button event: toggle between English and Hindi
-    document.getElementById('langBtn').addEventListener('click', () => {
-      i18n.set(i18n.lang === 'hi' ? 'hi' : 'en');
+    document.getElementById('langBtn').addEventListener('click',()=>{
+      i18n.set(i18n.lang==='hi'?'en':'hi');
     });
   </script>
 </body>
