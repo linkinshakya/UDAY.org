@@ -33,13 +33,14 @@
     .hamb span:before,.hamb span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:#e6f1ff}
     .hamb span:before{top:-6px}.hamb span:after{top:6px}
     nav.menu{display:none;flex-direction:column;gap:8px;padding:10px 0}
-    nav.menu a{
-  padding:10px 12px;
-  border-radius:10px;
-  background:rgba(255,255,255,.10); /* lighter tile */
-  color:var(--fg);                   /* force light text */
-  border:1px solid rgba(255,255,255,.18);
+    /* add this just below the nav.menu rule */
+nav.menu{
+  background:var(--panel);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:10px;
 }
+
     .open nav.menu{display:flex}
     @media (min-width:860px){
       .hamb{display:none}
